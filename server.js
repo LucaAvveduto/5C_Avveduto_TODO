@@ -13,7 +13,7 @@ app.use(
 );
 app.use("/", express.static(path.join(__dirname, "public")));
 
-const todos = [];
+let todos = [];
 
 app.post("/todo/add", (req, res) => {
   const todo = req.body.todo;

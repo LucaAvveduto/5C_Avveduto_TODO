@@ -7,13 +7,14 @@ const todoInput = document.querySelector("#insTodo");
 const todoTable = generateTodo(tableDiv);
 
 insertButton.onclick = () => {
-  console.log("premuto")
+  console.log("premuto");
   const todo = {
     name: todoInput.value,
     completed: false,
   };
 
-  todoTable.send({ todo: todo })
+  todoTable
+    .send({ todo: todo })
     .then(() => todoTable.load())
     .then((json) => {
       todoTable.setData(json.todos);
@@ -23,6 +24,14 @@ insertButton.onclick = () => {
 };
 
 todoTable.load().then((json) => {
+  todoTable.setData(json.todos);
+  todoTable.render();
+});
+
+setInterval(() => {
+  todoTable.load().then((json) => {
     todoTable.setData(json.todos);
+    todoInput.value = "";
     todoTable.render();
 });
+}, 30000);

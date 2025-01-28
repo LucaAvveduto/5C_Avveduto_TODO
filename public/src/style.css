@@ -3,7 +3,7 @@ html {
     height: 100%;
 }
 
-#form-container, div > h1 {
+#form-container {
     width: 100vw;
     display: flex;
     justify-content: end;
@@ -18,7 +18,7 @@ html {
     margin: 5% 1% 5% 1%;
 }
 
-div > h1 {
+#title-container {
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -39,4 +39,14 @@ div > h1 {
 
 #todoList > table > tbody > tr:hover > td {
     background-color: beige !important;
+}
+
+.task-completed > td {
+    background-color: rgb(183, 245, 183) !important;
+}
+
+@media (max-width: 768px) {
+    #todoList > * {
+        width: 90vw;
+    }
 }
