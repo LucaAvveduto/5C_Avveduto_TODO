@@ -4,7 +4,7 @@ html {
 }
 
 #form-container {
-    width: 100vw;
+    width: 97vw;
     display: flex;
     justify-content: end;
     place-items: center;
@@ -14,16 +14,16 @@ html {
     width: 30%;
 }
 
-#form-container > *{
+#form-container > * :not(#errorDiv){
     margin: 5% 1% 5% 1%;
 }
 
 #title-container {
+    margin-top: 2%;
     width: 100vw;
     display: flex;
     justify-content: center;
     place-items: center;
-    margin-top: 2%;
 }
 
 #todoList {
@@ -34,6 +34,7 @@ html {
 }
 
 #todoList > * {
+    margin-top: 5%;
     width: 70vw;
 }
 
@@ -45,8 +46,22 @@ html {
     background-color: rgb(183, 245, 183) !important;
 }
 
+.error-message {
+    margin-top: 2%;
+    width: 85%;
+    color: red;
+    font-weight: bold;
+}
+
 @media (max-width: 768px) {
     #todoList > * {
+        margin-top: 10%;
         width: 90vw;
+    }
+    #form-container > :first-child{
+        margin-right: 3%;
+    }
+    #form-container {
+        margin-top: 5%;
     }
 }
