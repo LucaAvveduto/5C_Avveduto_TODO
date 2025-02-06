@@ -17,8 +17,6 @@ app.use(
 );
 app.use("/", express.static(path.join(__dirname, "public")));
 
-let todos = [];
-
 const executeQuery = (sql) => {
   return new Promise((resolve, reject) => {      
         connection.query(sql, function (err, result) {
@@ -90,7 +88,7 @@ app.put("/todo/complete", async(req, res) => {
     todos = await todos.map(async(element) => {
       if (element.id === todo.id) {
         element.completed = true;
-        await complete();
+        await complete(element);
       }
       return element;
     });

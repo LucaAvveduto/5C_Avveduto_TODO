@@ -70,11 +70,14 @@ export const generateTodo = function (parentElement) {
 
     render: function () {
       let html = '<table class="table table-striped"><tbody>';
-      data.forEach((e,index) => {
+      data.forEach((e, index) => {
         let cssClass = e.completed ? "task-completed " : "";
         html +=
-          '<tr class=' + cssClass + "table-row" + '>' +
-          '<td>' +
+          "<tr class=" +
+          cssClass +
+          "table-row" +
+          ">" +
+          "<td>" +
           e.name +
           "</td>" +
           '<td><button type="button" class="btn btn-danger" id="' +
@@ -87,24 +90,26 @@ export const generateTodo = function (parentElement) {
       });
       html += "</tbody></table>";
       parentElement.innerHTML = html;
-      document.querySelectorAll("button.btn-danger").forEach((e,index) => {
+      document.querySelectorAll("button.btn-danger").forEach((e, index) => {
         e.onclick = () => {
-            this.deleteTodo(data[index].id);
+          this.deleteTodo(data[index].id).then(() => {
             this.load().then((r) => {
-                this.setData(r.todos);
-                this.render();
+              this.setData(r.todos);
+              this.render();
             });
-        }
+          });
+        };
       });
-      document.querySelectorAll("button.btn-success").forEach((e,index) => {
+      document.querySelectorAll("button.btn-success").forEach((e, index) => {
         e.onclick = () => {
-            this.completeTodo(data[index]);
+          this.completeTodo(data[index]).then(() => {
             this.load().then((r) => {
-                this.setData(r.todos);
-                console.log(r.todos);
-                this.render();
+              this.setData(r.todos);
+              console.log(r.todos);
+              this.render();
             });
-        }
+          });
+        };
       });
     },
     setData: (newValue) => {
