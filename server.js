@@ -5,6 +5,7 @@ const http = require("http");
 const fs = require('fs');
 const mysql = require('mysql2');
 const conf = JSON.parse(fs.readFileSync('conf.json'));
+conf.ssl.ca = fs.readFileSync(__dirname + '/ca.pem');
 
 const connection = mysql.createConnection(conf);
 const app = express();
